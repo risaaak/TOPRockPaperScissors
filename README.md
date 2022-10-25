@@ -1,2 +1,2 @@
 # TOPRockPaperScissors
-The Odin Project Rock Paper Scissors Projects
+The Odin Project Rock Paper Scissors Project

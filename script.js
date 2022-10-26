@@ -30,18 +30,21 @@ function game() {
         playerSelection = playerSelection.toLowerCase();
         computerSelection = getComputerChoice();
         let winner = playRound(playerSelection , computerSelection);
+        let round = i+1;
+        console.log("Round: " + round)
         if(winner == 'player')
-        {   
-            alert("Player wins");
-            playerScore++
+        {
+            //alert("Player wins");
+            console.log("Player wins")
+            playerScore++;
         }
         else if(winner == 'computer')
         {
-            alert("omputer wins");
+            console.log("Computer wins");
             computerScore++;
         }
         else{
-            alert("tie");
+            console.log("tie");
         }
     }
     if(playerScore > computerScore)

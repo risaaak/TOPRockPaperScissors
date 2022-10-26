@@ -1,5 +1,3 @@
-console.log("Hello World!");
-
 function getComputerChoice() {
     let items = ['rock' , 'paper' , 'scissor'];
     let choice = items[Math.floor(Math.random() * items.length)];
@@ -8,21 +6,47 @@ function getComputerChoice() {
 
 function playRound(playerSelection , computerSelection) {
     if(playerSelection == 'rock' && computerSelection == 'scissor')
-        return "You win! rock beats scissor ";
+        return 'player';
     else if (playerSelection == 'paper' && computerSelection == 'rock')
-        return "You win! paper beats rock";
+        return "player";
     else if (playerSelection == 'scissor' && computerSelection == 'paper')
-        return "You win! scissor beats paper";
+        return "player";
     else if (playerSelection == 'rock' && computerSelection == 'paper')
-        return "You loose! paper beats rock";
+        return "computer";
     else if (playerSelection == 'paper' && computerSelection == 'scissor')
-        return "You loose! scissor beats paper"
+        return "computer"
     else if(playerSelection == 'scissor' && computerSelection == 'rock')
-        return "You loose! rock beats scissor";
+        return "computer";
     else if(playerSelection == computerSelection)
-        return "Its a tie!";
+        return "tie";
 }
 
-computerSelection = getComputerChoice();
-playerSelection = 'rock';
-
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+    for(i=0 ; i<5 ; i++)
+    {
+        playerSelection = prompt("enter your choice");
+        playerSelection = playerSelection.toLowerCase();
+        computerSelection = getComputerChoice();
+        let winner = playRound(playerSelection , computerSelection);
+        if(winner == 'player')
+        {   
+            alert("Player wins");
+            playerScore++
+        }
+        else if(winner == 'computer')
+        {
+            alert("omputer wins");
+            computerScore++;
+        }
+        else{
+            alert("tie");
+        }
+    }
+    if(playerScore > computerScore)
+        return 'Player wins ' + playerScore +' to '+ computerScore;
+    else   
+            return "Computer wins " + computerScore + " to " + playerScore;
+    
+}

@@ -23,14 +23,44 @@ function playRound(playerSelection , computerSelection) {
 
 const buttons = document.querySelectorAll('button');
 
+let player = 0;
+let computer = 0;
+let round = 0;
 
 buttons.forEach((button) => {
 
-button.addEventListener('click', () => {
-    console.log(button.id);
+button.addEventListener('click', function() {
+    let winner = playRound(button.id,getComputerChoice());
+    round++;
+    if(winner == 'player')
+    {
+        player++;
+    }
+    else if (winner=='computer')
+    {
+        computer++;
+    }
+    if(round == 5)
+    {
+        if(player>computer)
+        {
+            console.log(`In 5 rounds the player won: ${player} times`);
+        }
+        else if(player == computer)
+        {
+            console.log(`It's a tie`);
+        }
+        else
+            console.log(`In 5 rounds the computer won: ${computer} times`);
+        round = 0;
+        computer = 0;
+        player = 0;
+    }
 });
 });
 
+
+/*
 function game() {
     let playerScore = 0;
     let computerScore = 0;
@@ -63,4 +93,4 @@ function game() {
         return "Computer wins " + computerScore + " to " + playerScore;
     
 }
-
+*/

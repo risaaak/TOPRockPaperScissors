@@ -40,6 +40,8 @@ button.addEventListener('click', function() {
     {
         computer++;
     }
+    showRunningScore(player,computer,round);
+
     if(round == 5)
     {
         determineWinner(player,computer);
@@ -47,35 +49,60 @@ button.addEventListener('click', function() {
 });
 });
 
+function showRunningScore(player,computer,round)
+{
+    console.log(`In 5 rounds the player won: ${player} times`);
+    const container = document.querySelector('.container');
+    const result = document.createElement('div');
+    result.textContent = `In round ${round} the winner is player the current score is 
+                            player: ${player} computer: ${computer}`;
+    container.appendChild(result);
+}
 function determineWinner(player,computer) {
+    let winner;
     if(player>computer)
         {
-            console.log(`In 5 rounds the player won: ${player} times`);
-            const container = document.querySelector('.container');
-            const result = document.createElement('div');
-            result.textContent = 'The winner is player';
-            container.appendChild(result);
+            winner = 'player';
         }
-        else if(player == computer)
+        else if(player<computer)
         {
-            console.log(`It's a tie`);
-            const container = document.querySelector('.container');
-            const result = document.createElement('div');
-            result.textContent = `It's a tie!`;
-            
-            container.appendChild(result);
+            winner = 'computer';
         }
         else
         {
-            console.log(`In 5 rounds the computer won: ${computer} times`);
-            const container = document.querySelector('.container');
-            const result = document.createElement('div');
-            result.textContent = 'The winner is computer';
-            container.appendChild(result);
+            winner = 'tie';
         }
         round = 0;
         computer = 0;
         player = 0;
+        showWinner(winner);
+}
+
+function showWinner(winner) {
+    if(winner == 'player')
+    {
+        console.log(`In 5 rounds the player won: ${player} times`);
+        const container = document.querySelector('.container');
+        const result = document.createElement('div');
+        result.textContent = 'The winner is player';
+        container.appendChild(result);
+    }
+    else if(winner == 'computer')
+    {
+        console.log(`In 5 rounds the computer won: ${computer} times`);
+        const container = document.querySelector('.container');
+        const result = document.createElement('div');
+        result.textContent = 'The winner is computer';
+        container.appendChild(result);
+    }
+    else
+    {
+        console.log(`It's a tie`);
+        const container = document.querySelector('.container');
+        const result = document.createElement('div');
+        result.textContent = `It's a tie!`;
+        container.appendChild(result);
+    }
 }
 
 /*

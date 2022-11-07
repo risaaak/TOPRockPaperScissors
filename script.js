@@ -21,6 +21,16 @@ function playRound(playerSelection , computerSelection) {
         return "tie";
 }
 
+const buttons = document.querySelectorAll('button');
+
+
+buttons.forEach((button) => {
+
+button.addEventListener('click', () => {
+    console.log(button.id);
+});
+});
+
 function game() {
     let playerScore = 0;
     let computerScore = 0;
@@ -50,6 +60,7 @@ function game() {
     if(playerScore > computerScore)
         return 'Player wins ' + playerScore +' to '+ computerScore;
     else   
-            return "Computer wins " + computerScore + " to " + playerScore;
+        return "Computer wins " + computerScore + " to " + playerScore;
     
 }
+

@@ -42,23 +42,41 @@ button.addEventListener('click', function() {
     }
     if(round == 5)
     {
-        if(player>computer)
-        {
-            console.log(`In 5 rounds the player won: ${player} times`);
-        }
-        else if(player == computer)
-        {
-            console.log(`It's a tie`);
-        }
-        else
-            console.log(`In 5 rounds the computer won: ${computer} times`);
-        round = 0;
-        computer = 0;
-        player = 0;
+        determineWinner(player,computer);
     }
 });
 });
 
+function determineWinner(player,computer) {
+    if(player>computer)
+        {
+            console.log(`In 5 rounds the player won: ${player} times`);
+            const container = document.querySelector('.container');
+            const result = document.createElement('div');
+            result.textContent = 'The winner is player';
+            container.appendChild(result);
+        }
+        else if(player == computer)
+        {
+            console.log(`It's a tie`);
+            const container = document.querySelector('.container');
+            const result = document.createElement('div');
+            result.textContent = `It's a tie!`;
+            
+            container.appendChild(result);
+        }
+        else
+        {
+            console.log(`In 5 rounds the computer won: ${computer} times`);
+            const container = document.querySelector('.container');
+            const result = document.createElement('div');
+            result.textContent = 'The winner is computer';
+            container.appendChild(result);
+        }
+        round = 0;
+        computer = 0;
+        player = 0;
+}
 
 /*
 function game() {

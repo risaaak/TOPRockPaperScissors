@@ -40,23 +40,26 @@ button.addEventListener('click', function() {
     {
         computer++;
     }
-    showRunningScore(player,computer,round);
+    showRunningScore(player,computer,round,winner);
 
     if(round == 5)
     {
         determineWinner(player,computer);
+        player = 0;
+        computer = 0;
     }
 });
 });
 
-function showRunningScore(player,computer,round)
+function showRunningScore(player,computer,round,winner)
 {
     console.log(`In 5 rounds the player won: ${player} times`);
     const container = document.querySelector('.container');
     const result = document.createElement('div');
-    result.textContent = `In round ${round} the winner is player the current score is 
+    result.textContent = `In round ${round} the winner is ${winner} the current score is 
                             player: ${player} computer: ${computer}`;
     container.appendChild(result);
+    result.className = 'round';
 }
 function determineWinner(player,computer) {
     let winner;
